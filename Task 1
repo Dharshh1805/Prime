@@ -1,0 +1,23 @@
+import pandas as pd
+df=pd.read_csv('prime.csv')
+df=df.drop_duplicates()
+df['date_added']=pd.to_datetime(df['date_added'])
+
+
+Cleaned=df.dropna()
+Cleaned
+Mean=df['rating'].mean()
+Mean
+median = df['rating'].median()
+Median
+Mode = df['rating'].mode()
+Mode
+import matplotlib.pyplot as plt
+
+plt.plot(df['release_year'], df.groupby('release_year')['title'].count())
+
+
+plt.title('Number of New Movies Added to Amazon Prime Each Year')
+plt.xlabel('Release Year')
+plt.ylabel('Number of Movies')
+plt.show()
